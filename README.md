@@ -4,7 +4,7 @@ This will be will be an installer for k1ss linux. Still need to do some probing 
 
 ## goals
 Priorities:
-1. ~~Wayland + some wm manager~~ nope!
+1. ~~Wayland + some wm manager~~ nope! Well... maybe: https://github.com/dilyn-corner/KISS-kde this really is an interesting approach.
 2. Media: mpv / svix / w3m / cmus / ranger combo
 3. Wireless: wpa_sup + wg
 4. Big Apps: Firefox / ~~Krita / Blender~~ / Latex
