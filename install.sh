@@ -8,10 +8,10 @@
 # i used an arch usb
 #
 
-# logging
-exec 3>&1 4>&2
-trap 'exec 2>&4 1>&3' 0 1 2 3
-exec 1>kiss-log.out 2>&1
+# logging - use if needed
+#exec 3>&1 4>&2
+#trap 'exec 2>&4 1>&3' 0 1 2 3 RETURN
+#exec 1>kiss-log.out 2>&1
 
 # prompts before start
 echo -n "swap size (GiB): "
@@ -21,7 +21,7 @@ read swap_size
 sgdisk -og /dev/sda 
 sgdisk -n 1:2048:+512MiB -t 1:ef00 /dev/sda
 start_of=$(sgdisk -f /dev/sda)
-sgdisk -n 2:$start_of:+$swap_sizeGiB -t 2:8200 /dev/sda
+sgdisk -n 2:$start_of:+${swap_size}GiB -t 2:8200 /dev/sda
 start_of=$(sgdisk -f /dev/sda)
 end_of=$(sgdisk -E /dev/sda)
 sgdisk -n 3:$start_of:$end_of -t 3:8300 /dev/sda
