@@ -5,6 +5,7 @@
 # gpt uefi basic install of kiss linux (k1ss.org)
 #
 # assumes an ethernet line is plugged in an wget is installed
+# i used an arch usb
 #
 
 # prompts before start
@@ -27,4 +28,43 @@ swapon /dev/sda2
 mount /dev/sda3 /mnt
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
+
+# kiss specific steps
+
+## download & verification
+url=https://github.com/kisslinux/repo/releases/download/2020.9-2 
+wget "$url/kiss-chroot-2020.9-2.tar.xz" 
+wget "$url/kiss-chroot-2020.9-2.tar.xz.sha256" 
+sha256sum -c < kiss-chroot-2020.9-2.tar.xz.sha256
+wget "$url/kiss-chroot-2020.9-2.tar.xz.asc"
+gpg --keyserver keys.gnupg.net --recv-key 46D62DD9F1DE636E
+gpg --verify "kiss-chroot-2020.9-2.tar.xz.asc" 
+
+## extraction & kiss-chroot
+cd /mnt
+tar xvf /root/kiss-chroot-2020.9-2.tar.xz
+genfstab /mnt >> /mnt/etc/fstab
+echo "++++++++++++++++++++++++++++++++++++++++++
+export REPOS_DIR='/var/db/kiss'                                   
+export KISS_PATH=''                                              
+
+KISS_PATH=$KISS_PATH:$REPOS_DIR/repo/core                         
+KISS_PATH=$KISS_PATH:$REPOS_DIR/repo/extra                        
+KISS_PATH=$KISS_PATH:$REPOS_DIR/repo/xorg                         
+KISS_PATH=$KISS_PATH:$REPOS_DIR/community/community
+
+export CFLAGS="-O3 -pipe -march=native"
+export CXXFLAGS="$CFLAGS"
+export MAKEFLAGS="-j2"
+                                                         
+export KISS_SU=su    
++++++++++++++++++++++++++++++++++++++++++++++
+" > /mnt/etc/profile.d/kiss_path.sh
+/mnt/bin/kiss-chroot /mnt . /etc/profile.d/kiss_path.sh
+/mnt/bin/kiss-chroot /mnt git clone https://github.com/kisslinux/repo /var/db/kiss/
+/mnt/bin/kiss-chroot /mnt git clone https://github.com/kisslinux/community /var/db/kiss/
+/mnt/bin/kiss-chroot /mnt kiss b gnupg1
+/mnt/bin/kiss-chroot /mnt kiss i gnupg1
+/mnt/bin/kiss-chroot /mnt gpg --keyserver keys.gnupg.net --recv-key 46D62DD9F1DE636E
+/mnt/bin/kiss-chroot /mnt echo trusted-key 0x46d62dd9f1de636e >> /root/.gnupg/gpg.conf
 
