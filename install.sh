@@ -67,4 +67,12 @@ export KISS_SU=su
 /mnt/bin/kiss-chroot /mnt kiss install gnupg1
 /mnt/bin/kiss-chroot /mnt gpg --keyserver keys.gnupg.net --recv-key 46D62DD9F1DE636E
 /mnt/bin/kiss-chroot /mnt echo trusted-key 0x46d62dd9f1de636e >> /root/.gnupg/gpg.conf
+/mnt/bin/kiss-chroot /mnt git config merge.verifySignatures true /var/db/kiss/repo
 
+echo "at this point everything is in place tp update the kiss build."
+echo "to run the update type:"
+echo "/mnt/bin/kiss-chroot /mnt"
+echo "kiss update"
+echo "you will need to run it twice"
+echo "running kiss build * at /var/db/kiss/installed/"
+echo "this will take some four hours... so grab a book."
