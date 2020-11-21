@@ -8,11 +8,6 @@
 # i used an arch usb
 #
 
-# logging - use if needed
-#exec 3>&1 4>&2
-#trap 'exec 2>&4 1>&3' 0 1 2 3 RETURN
-#exec 1>kiss-log.out 2>&1
-
 # prompts before start
 echo -n "swap size (GiB): "
 read swap_size
@@ -49,16 +44,16 @@ gpg --verify "kiss-chroot-2020.9-2.tar.xz.asc"
 cd /mnt
 tar xvf /root/kiss-chroot-2020.9-2.tar.xz
 genfstab /mnt >> /mnt/etc/fstab
-cat "export REPOS_DIR='/var/db/kiss'                                   
+echo "export REPOS_DIR='/var/db/kiss'                                   
 export KISS_PATH=''                                              
 
-KISS_PATH=$KISS_PATH:$REPOS_DIR/repo/core                         
-KISS_PATH=$KISS_PATH:$REPOS_DIR/repo/extra                        
-KISS_PATH=$KISS_PATH:$REPOS_DIR/repo/xorg                         
-KISS_PATH=$KISS_PATH:$REPOS_DIR/community/community
+KISS_PATH=\$KISS_PATH:\$REPOS_DIR/repo/core                         
+KISS_PATH=\$KISS_PATH:\$REPOS_DIR/repo/extra                        
+KISS_PATH=\$KISS_PATH:\$REPOS_DIR/repo/xorg                         
+KISS_PATH=\$KISS_PATH:\$REPOS_DIR/community/community
 
 export CFLAGS="-O3 -pipe -march=native"
-export CXXFLAGS="$CFLAGS"
+export CXXFLAGS="\$CFLAGS"
 export MAKEFLAGS="-j2"
                                                          
 export KISS_SU=su    
@@ -72,6 +67,7 @@ export KISS_SU=su
 /mnt/bin/kiss-chroot /mnt echo trusted-key 0x46d62dd9f1de636e >> /root/.gnupg/gpg.conf
 /mnt/bin/kiss-chroot /mnt git config merge.verifySignatures true /var/db/kiss/repo
 
+echo ""
 echo "at this point everything is in place tp update the kiss build."
 echo "to run the update type:"
 echo "/mnt/bin/kiss-chroot /mnt"
