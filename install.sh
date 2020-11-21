@@ -49,7 +49,7 @@ gpg --verify "kiss-chroot-2020.9-2.tar.xz.asc"
 cd /mnt
 tar xvf /root/kiss-chroot-2020.9-2.tar.xz
 genfstab /mnt >> /mnt/etc/fstab
-echo "export REPOS_DIR='/var/db/kiss'                                   
+cat "export REPOS_DIR='/var/db/kiss'                                   
 export KISS_PATH=''                                              
 
 KISS_PATH=$KISS_PATH:$REPOS_DIR/repo/core                         
