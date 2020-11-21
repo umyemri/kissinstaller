@@ -2,6 +2,10 @@
 https://k1ss.org  
 This will be will be an installer for k1ss linux. Still need to do some probing into the project however.
 
+This is a very individualistic installer. It is sectioned out in stages. At the end of those sections
+you should be doing some either very long thought out processes or mechanisms that take time. For the 
+thought based sections: you will need to study your own hardware and what is needed.
+
 ## goals
 Priorities:
 1. ~~Wayland + some wm manager~~ nope! Well... maybe: https://github.com/dilyn-corner/KISS-kde this really is an interesting approach.
