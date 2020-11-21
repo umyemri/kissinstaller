@@ -52,9 +52,9 @@ KISS_PATH=\$KISS_PATH:\$REPOS_DIR/repo/extra
 KISS_PATH=\$KISS_PATH:\$REPOS_DIR/repo/xorg                         
 KISS_PATH=\$KISS_PATH:\$REPOS_DIR/community/community
 
-export CFLAGS="-O3 -pipe -march=native"
-export CXXFLAGS="\$CFLAGS"
-export MAKEFLAGS="-j2"
+export CFLAGS=\"-O3 -pipe -march=native\"
+export CXXFLAGS=\"\$CFLAGS\"
+export MAKEFLAGS=\"-j2\"
                                                          
 export KISS_SU=su    
 " > /mnt/etc/profile.d/kiss_path.sh
