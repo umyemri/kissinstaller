@@ -33,5 +33,5 @@ tar xvf linux-5.9.9.tar.xz
 cd linux-*
 
 echo 'ready for kernel generation'
-echo "follow the usual process - i\'ll make a version of this for my xps 9360"
-echo "but that\'s going to be just for me. you\'re mileage may very."
+echo "follow the usual process - i'll make a version of this for my xps 9360"
+echo "but that's going to be just for me. you're mileage may very."
