@@ -5,7 +5,6 @@
 # kiss-chroot doesn't act like arch-chroot
 #
 
-/mnt/bin/kiss-chroot /mnt
 # . /etc/profile.d/kiss_path.sh
 cd /var/db/kiss/
 git clone https://github.com/kisslinux/repo 
