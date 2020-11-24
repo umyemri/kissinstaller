@@ -6,14 +6,21 @@
 # the config from the arch installer.
 #
 
+# alternative... if you're not interested in combing through kernel make commands
+#echo -n "copy arch kernel config (y/n): "
+#read arch
+#if arch = 'y'; then
+#    linux_ver = ${uname -r | sed '/\d*\.\d*\.\d*/g'}
+#    zcat /proc/config.gz > ~/linux-${linux_ver}/.config
+#else
+
 echo -n "version number of kernel (ex. 5.9.2): "
 read linux_ver
 
+#fi
+
 # move to where the kernel package and .config is
 cd ~/linux-${linux_ver}
-
-# alternative... if you're not interested in combing through kernel make commands
-#zcat /proc/config.gz > ~/linux-${linux_ver}/.config
 
 make -j "$(nproc)" #long process here
 make install
