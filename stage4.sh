@@ -12,6 +12,9 @@ read linux_ver
 # move to where the kernel package and .config is
 cd ~/linux-${linux_ver}
 
+# alternative... if you're not interested in combing through kernel make commands
+#zcat /proc/config.gz > ~/linux-${linux_ver}/.config
+
 make -j "$(nproc)" #long process here
 make install
 
