@@ -2,7 +2,7 @@
 #
 # stage 4: kernel generation
 #
-# method that i used was the localyesconfig but there is ways of just copying
+# method that i used was the localyesconfig but there are ways of just copying
 # the config from the arch installer.
 #
 
