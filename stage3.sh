@@ -7,6 +7,8 @@
 
 echo -n "hostname: "
 read hostname
+echo -n "linux version (ex. 5.9.2): "
+read linuxver
 
 cd ~ # going back to root
 
@@ -28,8 +30,9 @@ kiss b ncurses && kiss i ncurses
 kiss b perl && kiss i perl
 
 # consider making something more dynamic than this... future umyemri problem
-wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.9.9.tar.xz
-tar xvf linux-5.9.9.tar.xz
+cd ~
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${linuxver}.tar.xz
+tar xvf linux-${linuxver}.tar.xz
 cd linux-*
 
 echo 'ready for kernel generation'
