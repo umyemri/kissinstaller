@@ -18,5 +18,5 @@ git config merge.verifySignatures true
 kiss update
 cd /var/db/kiss/installed
 
-# run the below when you've got time
-# kiss build *
+echo "run the below when you've got time:"
+echo "kiss build *"
