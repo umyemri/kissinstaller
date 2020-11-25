@@ -54,7 +54,7 @@ KISS_PATH=\$KISS_PATH:\$REPOS_DIR/community/community
 
 export CFLAGS=\"-O3 -pipe -march=native\"
 export CXXFLAGS=\"\$CFLAGS\"
-export MAKEFLAGS=\"-j2\"
+export MAKEFLAGS=\"-j3\"
                                                          
 export KISS_SU=su    
 " > /mnt/etc/profile.d/kiss_path.sh
