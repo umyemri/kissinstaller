@@ -11,7 +11,7 @@
 #read arch
 #if arch = 'y'; then
 #    linux_ver = ${uname -r | sed '/\d*\.\d*\.\d*/g'}
-#    uname -r | awk '/\d*\.\d*\.\d*/{ print $0 }'
+#    #uname -r | awk '/\d*\.\d*\.\d*/{ print $0 }' # not sure why these aren't working...
 #    zcat /proc/config.gz > ~/linux-${linux_ver}/.config
 #else
 
