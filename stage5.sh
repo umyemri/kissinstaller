@@ -2,7 +2,7 @@
 #
 # stage 5: boot loader
 #
-# 
+# assumes kernal compiles and installed.
 #
 
 # used later for efi schema
