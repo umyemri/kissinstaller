@@ -3,7 +3,7 @@
 # stage 5: boot loader
 #
 # assumes kernal compiles and installed.
-# grub install on my dell xps is a mystery i'll solve some other day.
+# uefi grub install on my dell xps is a mystery i'll solve some other day.
 #
 
 # used later for efi schema
