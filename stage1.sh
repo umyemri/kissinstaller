@@ -2,7 +2,7 @@
 #
 # install.sh
 #
-# gpt uefi basic install of kiss linux (k1ss.org)
+# gpt uefi/mbr basic install of kiss linux (k1ss.org)
 #
 # assumes an ethernet line is plugged in an wget is installed
 # i used an arch usb
