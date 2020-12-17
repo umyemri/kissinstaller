@@ -18,5 +18,6 @@ git config merge.verifySignatures true
 kiss update
 cd /var/db/kiss/installed
 
-echo "run the below when you've got time:"
+echo "done! but you need to run kiss update again."
+echo "after that run the below when you've got time:"
 echo "kiss build *"
