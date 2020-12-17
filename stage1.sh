@@ -11,29 +11,30 @@
 # prompts before start
 echo -n "swap size (GiB): "
 read swap_size
+#echo -n "mbr or uefi (m/u): "
+#read boot_type
 
 # disk setup
 
 # uefi
-#sgdisk -og /dev/sda 
-#sgdisk -n 1:2048:+512MiB -t 1:ef00 /dev/sda #uefi only
-#sgdisk -n 1:2048:+512MiB -t 1:ef00
-#start_of=$(sgdisk -f /dev/sda)
-#sgdisk -n 2:$start_of:+${swap_size}GiB -t 2:8200 /dev/sda
-#start_of=$(sgdisk -f /dev/sda)
-#end_of=$(sgdisk -E /dev/sda)
-#sgdisk -n 3:$start_of:$end_of -t 3:8300 /dev/sda
-#sgdisk -p /dev/sda # print if you want to see the layout
+#parted -s -a optimal /dev/sda \
+#    mklabel gpt \
+#    mkpart "EFI system partition" fat32 1MiB 261MiB \
+#    mkpart "swap partition" linux-swap 261MiB $((${swap-size}*1024+261))MiB \
+#    mkpart "root partition" ext4 $((${swap-size}*1024+261))MiB 100%
+#parted /dev/sda set 1 esp on
+#mkfs.fat -F32 /dev/sda1
 
 # mbr
 parted -s -a optimal -- /dev/sda \
     mklabel msdos \
-    mkpart primary 1MiB 512MiB \
-    set 1 boot on \
-    mkpart primary linux-swap 512MiB +$((${swap_size}*1024))MiB \
+    mkpart primary ext4 1MiB 513MiB \
+    mkpart primary linux-swap 513MiB $((${swap_size}*1024+512))MiB \
     mkpart primary ext4 $((${swap_size}*1024+512))MiB 100%
+parted /dev/sda set 1 boot on
+#parted /dev/sda align-check optimal 1
+mkfs.ext4 /dev/sda1
 
-mkfs.fat -F32 /dev/sda1
 mkfs.ext4 /dev/sda3
 mkswap /dev/sda2
 swapon /dev/sda2
