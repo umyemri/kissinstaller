@@ -11,10 +11,11 @@ To get started:
 curl -sL https://git.io/JLcN7 > prep.sh
 ```
 
-stage 1-2: 37 minute mark  
-stage 3: 46 minute mark  
-stage 4: 1:11 hour mark  
-stage 5: 1:19 hour total  
+Build Time:
+stage 1-2: 37 minute mark
+stage 3: 46 minute mark (9 minutes)
+stage 4: 1:11 hour mark (25 minutes)
+stage 5: 1:19 hour total  (8 minutes)
 
 ## goals
 Priorities:
